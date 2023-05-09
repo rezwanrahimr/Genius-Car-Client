@@ -1,4 +1,25 @@
+.footer {
+  font-size: 16px;
+  background: #151515;
+}
+.footer-title {
+  color: #ffffff;
+}
+.link {
+  color: #f3f3f3;
+}
 .social-icons {
   width: 36.36px;
   height: 34.63px;
+}
+
+a:link {
+  color: white;
+}
+a:hover {
+  color: red !important;
+}
+
+/*  */
+@media only screen and (max-width: 600px) {
 }
