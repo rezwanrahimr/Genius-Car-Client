@@ -39,20 +39,36 @@ const Footer = () => {
         </div>
         <div>
           <span className="footer-title">About</span>
-          <a className="link link-hover">Home</a>
-          <a className="link link-hover">Service</a>
-          <a className="link link-hover">Contact</a>
+          <a href="" className="link link-hover">
+            Service
+          </a>
+          <a href="" className="link link-hover">
+            Home
+          </a>
+          <a href="" className="link link-hover">
+            Contact
+          </a>
         </div>
         <div>
           <span className="footer-title">Company</span>
-          <a className="link link-hover">Why Car Doctor</a>
-          <a className="link link-hover">About</a>
+          <a href="" className="link link-hover">
+            Why Car Doctor
+          </a>
+          <a href="" className="link link-hover">
+            About
+          </a>
         </div>
         <div>
           <span className="footer-title">Support</span>
-          <a className="link link-hover">Support Center</a>
-          <a className="link link-hover">Feedback</a>
-          <a className="link link-hover">Accessability</a>
+          <a href="" className="link link-hover">
+            Support Center
+          </a>
+          <a href="" className="link link-hover">
+            Feedback
+          </a>
+          <a href="" className="link link-hover">
+            Accessability
+          </a>
         </div>
       </footer>
     </div>
