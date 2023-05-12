@@ -21,11 +21,11 @@ const BannerItem = ({ slider }) => {
           majority have suffered alteration in some form
         </h6>
       </div>
-      <div className="absolute flex  transform -translate-y-1/2 left-5 right-5 top-3/4 ms-24 ">
-        <button className="btn btn-error">Error</button>
-        <button className="btn btn-outline ">Error</button>
+      <div className="absolute flex  transform -translate-y-1/2 left-5 right-5 top-3/4 ms-24 mt-7">
+        <button className="discover-btn">Discover More</button>
+        <button className="latest-btn">Latest Project</button>
       </div>
-      <div className="absolute flex  transform -translate-y-1/2  right-1 top-3/4">
+      <div className="absolute flex  transform -translate-y-1/2  right-1 top-3/4 mt-28">
         <a href={`#slide${prev}`} className="btn btn-circle me-5">
           ❮
         </a>

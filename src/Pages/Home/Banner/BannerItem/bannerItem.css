@@ -13,3 +13,26 @@
   ); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#002f4b', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
 }
+
+.carousel-item h1 {
+  line-height: 75px;
+  margin-bottom: 30px;
+}
+.discover-btn {
+  width: 170px;
+  height: 56px;
+  border: none;
+  color: white;
+  background-color: #ff3811;
+}
+.latest-btn {
+  color: white;
+  border: 1px solid white;
+  width: 170px;
+  height: 56px;
+  background: none;
+  margin-left: 20px;
+}
+.latest-btn:hover {
+  border: 1px solid #ff3811;
+}
