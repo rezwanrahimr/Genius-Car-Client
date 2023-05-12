@@ -73,10 +73,15 @@ const Header = () => {
         </div>
         <div className="navbar-end">
           <HiOutlineShoppingBag
-            style={{ width: "24px", height: "24px" }}
+            style={{ width: "24px", height: "24px", cursor: "pointer" }}
           ></HiOutlineShoppingBag>
           <HiOutlineSearch
-            style={{ width: "24px", height: "24px", margin: "0 20px" }}
+            style={{
+              width: "24px",
+              height: "24px",
+              margin: "0 20px",
+              cursor: "pointer",
+            }}
           ></HiOutlineSearch>
           <button
             className="btn btn-outline "
