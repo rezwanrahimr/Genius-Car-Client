@@ -3,12 +3,16 @@ import Services from "./Services";
 import TopHeader from "../../Sheard/TopHeader/TopHeader";
 
 const Service = () => {
+  // Declare state and set service data on the sate.
   const [service, setService] = useState([]);
+
+  //   Load Service Data.
   useEffect(() => {
     fetch("../../../../public/service.json")
       .then((res) => res.json())
       .then((data) => setService(data));
   }, []);
+
   return (
     <div>
       <div className="text-center ">
@@ -22,11 +26,14 @@ const Service = () => {
           }}
         </TopHeader>
 
+        {/* Service Card Component */}
         <div className="grid grid-cols-3 gap-6">
           {service?.map((element) => (
             <Services key={element._id} service={element}></Services>
           ))}
         </div>
+
+        {/* More Service Button */}
         <button
           style={{
             width: "170px",

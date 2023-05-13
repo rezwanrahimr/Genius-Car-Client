@@ -2,9 +2,9 @@ import React from "react";
 import { AiOutlineArrowRight } from "react-icons/ai";
 const Services = ({ service }) => {
   const { id, title, img, price } = service;
-  console.log(title);
 
   return (
+    // Service Card.
     <div>
       <div
         className="card card-compact p-6 bg-base-100 shadow-xl "
