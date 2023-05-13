@@ -1,3 +1,8 @@
+.navbarWidth {
+  width: 1140px !important;
+  margin: 0 auto;
+}
+
 .navItems {
   font-size: 18px;
 }

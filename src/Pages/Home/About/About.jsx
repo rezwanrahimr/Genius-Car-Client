@@ -1,5 +1,6 @@
 import React from "react";
 import aboutImg from "../../../assets/images/about_us/Group 19.png";
+import TopHeader from "../../Sheard/TopHeader/TopHeader";
 
 const About = () => {
   return (
@@ -27,6 +28,7 @@ const About = () => {
           injected humour, or randomised words which don't <br /> look even
           slightly believable.{" "}
         </p>
+
         <p>
           the majority have suffered alteration in some form, by injected <br />
           humour, or randomised words which don't look even slightly <br />{" "}
