@@ -1,0 +1,16 @@
+.choose-us div {
+  width: 170px;
+  height: 156px;
+  border: 1px solid #e8e8e8;
+}
+
+.choose-Items {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.choose-Items img {
+  margin-bottom: 20px;
+}
