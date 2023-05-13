@@ -9,10 +9,10 @@ const ProductsCard = ({ product }) => {
   return (
     <div>
       <div
-        className="card  bg-base-100 shadow-xl mt-16"
+        className="card  bg-base-100 p-6 shadow-xl mt-16"
         style={{ width: "364px", height: "389px" }}
       >
-        <figure className="px-10 pt-10">
+        <figure className="">
           <img
             src={img}
             alt="Shoes"
