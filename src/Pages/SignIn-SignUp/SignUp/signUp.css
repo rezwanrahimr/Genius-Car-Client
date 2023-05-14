@@ -35,4 +35,5 @@ form .submit-btn {
   font-weight: 600;
   color: white;
   background-color: #ff3811;
+  cursor: pointer;
 }
