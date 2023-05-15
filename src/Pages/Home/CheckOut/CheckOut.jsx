@@ -1,20 +1,50 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import img from "../../../assets/images/checkout/checkout.png";
 import "./checkout.css";
+import { authContext } from "../../../Context/UseContext";
+import { toast } from "react-hot-toast";
 
 const CheckOut = () => {
-  const { title } = useLoaderData();
+  const { _id, title, price } = useLoaderData();
+  const { user } = useContext(authContext);
 
   const handleFormControl = (event) => {
     event.preventDefault();
     const form = event.target;
-    const firstName = form.firstName.value;
-    const lastName = form.lastName.value;
+    const name = `${form.firstName.value} ${form.lastName.value} `;
     const phone = form.phone.value;
-    const email = form.email.value;
+    const email = form.email.value || "unregister";
     const message = form.message.value;
-    console.log(firstName, lastName, phone, email, message);
+
+    const order = {
+      service: _id,
+      serviceName: title,
+      price,
+      customer: name,
+      email,
+      phone,
+      message,
+    };
+
+    if (phone.length < 11) {
+      toast.error("Please Enter Valid Phone Number !");
+    } else {
+      fetch("http://localhost:5000/order", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(order),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.acknowledged) {
+            toast.success("Thanks For Order !");
+            form.reset();
+          }
+        });
+    }
   };
 
   return (
@@ -32,6 +62,7 @@ const CheckOut = () => {
           <input
             type="text"
             name="firstName"
+            required
             placeholder="First Name"
             className="input input-bordered "
           />
@@ -39,17 +70,21 @@ const CheckOut = () => {
             type="text"
             name="lastName"
             placeholder="Last Name"
+            required
             className="input input-bordered "
           />
           <input
             type="text"
             name="phone"
+            required
             placeholder="Your Phone"
             className="input input-bordered "
           />
           <input
             type="text"
             name="email"
+            defaultValue={user?.email}
+            readOnly
             placeholder="Your Email"
             className="input input-bordered "
           />
@@ -58,11 +93,12 @@ const CheckOut = () => {
           <textarea
             className="textarea"
             name="message"
+            required
             placeholder="Your Message"
           ></textarea>
           <br />
 
-          <input className="submit-btn" type="submit" value="submit" />
+          <input className="submit-btn" type="submit" value="Order Confirm" />
         </div>
       </form>
     </div>

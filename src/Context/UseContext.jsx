@@ -8,6 +8,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
 } from "firebase/auth";
+import { Toaster } from "react-hot-toast";
 
 // Create Context.
 export const authContext = createContext();
@@ -64,7 +65,10 @@ const UseContext = ({ children }) => {
   };
   return (
     // Context Provider.
-    <authContext.Provider value={authInfo}>{children}</authContext.Provider>
+    <authContext.Provider value={authInfo}>
+      {children}{" "}
+      <Toaster duration="4000" position="top-center" reverseOrder={false} />
+    </authContext.Provider>
   );
 };
 
