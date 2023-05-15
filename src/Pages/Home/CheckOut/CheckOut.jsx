@@ -4,6 +4,7 @@ import img from "../../../assets/images/checkout/checkout.png";
 import "./checkout.css";
 import { authContext } from "../../../Context/UseContext";
 import { toast } from "react-hot-toast";
+import Swal from "sweetalert2";
 
 const CheckOut = () => {
   const { _id, title, price } = useLoaderData();
@@ -28,7 +29,12 @@ const CheckOut = () => {
     };
 
     if (phone.length < 11) {
-      toast.error("Please Enter Valid Phone Number !");
+      Swal.fire({
+        icon: "error",
+        title: "Oops.. Please Enter Valid Phone Number !",
+        text: "Something went wrong!",
+        // footer: '<a href="">Why do I have this issue?</a>',
+      });
     } else {
       fetch("http://localhost:5000/order", {
         method: "POST",
@@ -40,7 +46,7 @@ const CheckOut = () => {
         .then((res) => res.json())
         .then((data) => {
           if (data.acknowledged) {
-            toast.success("Thanks For Order !");
+            Swal.fire("Success!", "You clicked the button!", "success");
             form.reset();
           }
         });

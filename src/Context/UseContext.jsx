@@ -24,20 +24,24 @@ const UseContext = ({ children }) => {
 
   //   Create User WIth Email & Password.
   const createUserWithEmail = (email, password) => {
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   //   Login WIth Email and Password.
   const signInEmail = (email, password) => {
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
   //   Google Login
   const googleLogin = () => {
+    setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
   //   Facebook Login
   const facebookLogin = () => {
+    setLoading(true);
     return signInWithPopup(auth, facebookProvider);
   }; // user
   useEffect(() => {
@@ -46,6 +50,7 @@ const UseContext = ({ children }) => {
         const uid = user.uid;
         if (uid) {
           setUser(user);
+          setLoading(false);
         }
       }
       return () => {
