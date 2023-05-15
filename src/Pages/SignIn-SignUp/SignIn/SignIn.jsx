@@ -87,7 +87,7 @@ const SignIn = () => {
             placeholder="your password"
             id=""
           />
-          <input type="submit" className="submit-btn" value="sign in" />
+          <input type="submit" className="signUp-btn" value="sign in" />
           <p className="text-center">Or Sign Up with</p>
           <div className="flex justify-center mt-7 mb-4">
             <img

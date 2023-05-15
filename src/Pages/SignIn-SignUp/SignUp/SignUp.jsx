@@ -72,7 +72,7 @@ const SignUp = () => {
             placeholder="your password"
             id=""
           />
-          <input type="submit" className="submit-btn" value="sign up" />
+          <input type="submit" className="signUp-btn" value="sign up" />
           <p className="text-center">Or Sign Up with</p>
           <div className="flex justify-center mt-7 mb-4">
             <img src={facebook} alt="" />

@@ -11,21 +11,21 @@
   height: 60px;
   margin: 24px 0 0 0;
 }
-.form-container div {
+/* .form-container div {
   padding-top: 97px;
-}
+} */
 .textarea {
   width: 940px;
   height: 250px;
-  margin-left: 90px;
+  /* margin-left: 90px; */
   margin-top: 24px;
 }
 .submit-btn {
-  width: 946px;
-  height: 50px;
+  width: 946px !important;
+  height: 50px !important;
   border-radius: 10px;
   margin-top: 24px;
-  background-color: #ff3811;
+  background-color: #ff3811 !important;
   color: white;
   margin-left: 90px;
   cursor: pointer;
