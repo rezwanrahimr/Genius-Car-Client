@@ -4,16 +4,29 @@ import { useState } from "react";
 import { authContext } from "../../Context/UseContext";
 import OrdersRow from "./OrdersRow";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
-  const { user } = useContext(authContext);
+  const { user, loading, logOut } = useContext(authContext);
+  let navigate = useNavigate();
 
-  const url = `http://localhost:5000/orders?email=${user?.email}`;
   useEffect(() => {
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => setOrders(data));
+    if (user?.email) {
+      fetch(`http://localhost:5000/orders?email=${user?.email}`, {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+        .then((res) => {
+          if (res.status == 401 || res.status == 403) {
+            logOut();
+            navigate("/signIn");
+          }
+          return res.json();
+        })
+        .then((data) => setOrders(data));
+    }
   }, [user?.email]);
 
   //   Delete
@@ -61,7 +74,7 @@ const Orders = () => {
         <div className="overflow-x-auto w-full">
           <table className="table w-full">
             <tbody>
-              {orders.map((order) => (
+              {orders?.map((order) => (
                 <OrdersRow
                   key={order._id}
                   order={order}

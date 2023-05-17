@@ -3,11 +3,14 @@ import React, { useContext } from "react";
 import facebook from "../../../assets/images/login/Facebook.png";
 import google from "../../../assets/images/login/Google.png";
 import linkedin from "../../../assets/images/login/Group 25.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { authContext } from "../../../Context/UseContext";
 const SignIn = () => {
   // user context
   const { signInEmail, googleLogin, facebookLogin } = useContext(authContext);
+  let navigate = useNavigate();
+  let location = useLocation();
+  let from = location.state?.from?.pathname || "/";
 
   const handleFormData = (event) => {
     event.preventDefault();
@@ -18,7 +21,24 @@ const SignIn = () => {
     signInEmail(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log(user);
+        const userInfo = {
+          email: user?.email,
+        };
+        fetch("http://localhost:5000/jwt", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(userInfo),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            localStorage.setItem("token", data?.token);
+          });
+
+        if (user) {
+          navigate(from, { replace: true });
+        }
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -33,7 +53,9 @@ const SignIn = () => {
     googleLogin()
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        if (user) {
+          navigate(from, { replace: true });
+        }
       })
       .catch((error) => {
         // Handle Errors here.
@@ -51,7 +73,9 @@ const SignIn = () => {
       .then((result) => {
         // The signed-in user info.
         const user = result.user;
-        console.log(user);
+        if (user) {
+          navigate(from, { replace: true });
+        }
       })
       .catch((error) => {
         // Handle Errors here.

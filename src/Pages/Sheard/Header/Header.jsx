@@ -1,10 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
+import { authContext } from "../../../Context/UseContext";
 import { Link } from "react-router-dom";
 import logo from "./logo.svg";
 import style from "./Header.module.css";
 import { HiOutlineShoppingBag, HiOutlineSearch } from "react-icons/hi";
 
 const Header = () => {
+  const { user, logOut } = useContext(authContext);
+
+  // sign out
+  const handleSignOut = () => {
+    console.log("click");
+    logOut()
+      .then(() => {
+        // Sign-out successful.
+      })
+      .catch((error) => {
+        // An error happened.
+      });
+  };
+  console.log(user);
   const navItems = (
     <>
       <li>
@@ -89,6 +104,14 @@ const Header = () => {
           >
             Appointment
           </button>
+
+          {user ? (
+            <button onClick={handleSignOut}>Sign-Out</button>
+          ) : (
+            <Link to="/signIn">
+              <button>Login</button>
+            </Link>
+          )}
         </div>
       </div>
     </div>

@@ -7,6 +7,7 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
+  signOut,
 } from "firebase/auth";
 import { Toaster } from "react-hot-toast";
 
@@ -43,21 +44,23 @@ const UseContext = ({ children }) => {
   const facebookLogin = () => {
     setLoading(true);
     return signInWithPopup(auth, facebookProvider);
-  }; // user
+  };
+  // Sign-Out
+  const logOut = () => {
+    return signOut(auth);
+  };
+
+  // user
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        const uid = user.uid;
-        if (uid) {
-          setUser(user);
-          setLoading(false);
-        }
-      }
+      setUser(user);
+      setLoading(false);
+
       return () => {
         return unsubscribe();
       };
     });
-  }, []);
+  }, [auth]);
 
   //   Context Value.
   const authInfo = {
@@ -67,6 +70,7 @@ const UseContext = ({ children }) => {
     signInEmail,
     googleLogin,
     facebookLogin,
+    logOut,
   };
   return (
     // Context Provider.
